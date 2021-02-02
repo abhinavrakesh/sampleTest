@@ -1,0 +1,12 @@
+{
+  "desiredCapabilities": {
+    "APPIUM_LOCAL_HOST": "http://127.0.0.1:4723/wd/hub",
+    "PLATFORM": "Android",
+    "DEVICE_NAME": "Redmi note 9 pro",
+    "APP_PACKAGE": "com.ebay.mobile",
+    "APP_ACTIVITY": ".activities.MainActivity",
+    "OS_VERSION": "10.0.0",
+    "withIPAddress": "127.0.0.1",
+    "usingPort": 4723
+  }
+}
