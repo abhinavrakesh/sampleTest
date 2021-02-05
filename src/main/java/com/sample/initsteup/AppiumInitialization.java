@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.sample.global.Global;
 import com.sample.main.ExcelFile;
+import com.sample.main.ExcelFileAction;
 import com.sample.main.UIActions;
 import com.sample.utility.SampleDesigerCapability;
 
@@ -34,15 +35,18 @@ public class AppiumInitialization {
 		desiredCapabilities.setCapability("appPackage", sdc.getAppPackage());
 		desiredCapabilities.setCapability("appActivity", sdc.getAppActivity());
 		ExcelFile excelFile;
+		ExcelFileAction excelFileAction;
 		try {
 			driver = new AndroidDriver(new URL(sdc.getAppiumLocalHost()),desiredCapabilities);
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 			excelFile = new ExcelFile(Global.excelPath);
+			excelFileAction = new ExcelFileAction(Global.excelPathAction);
 			int rowCount = excelFile.getRowCount(0);
-			String[] data;
+			String[] dataObject,dataAction;
 			for (int i = 1; i < rowCount; i++) {
-				data=excelFile.getData("login", i, 0);
-				UIActions.Action(driver,data[0].trim(),data[1].trim(),data[2].trim());
+				dataObject=excelFile.getData("objects", i, 0);
+				dataAction=excelFileAction.getData("actions", i, 0);
+				UIActions.Action(driver,dataObject[1].trim(),dataObject[2].trim(),dataAction[0].trim(),dataAction[1].trim());
 			}
 
 		} catch (Exception e) {
@@ -93,5 +97,6 @@ public class AppiumInitialization {
 		System.out.print("Server stop");
 	    service.stop();
 	}
+	
 
 }

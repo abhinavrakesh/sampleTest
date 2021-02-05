@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelFile{
+public class ExcelFileAction{
 	XSSFWorkbook work_book;
 	XSSFSheet sheet;
-	public ExcelFile(String excelfilePath) {
+	public ExcelFileAction(String excelfilePath) {
 		try {
 			FileInputStream s = new FileInputStream(excelfilePath);
 			work_book = new XSSFWorkbook(s);
